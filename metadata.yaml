@@ -1,0 +1,35 @@
+_repo: Chaucer-s-Works-Volume-4-of-7-The-Canterbury-Tales_22120
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Chaucer, Geoffrey
+    alias: Chaucer, Jeffrey
+    birthdate: 1342
+    deathdate: 1400
+    gutenberg_agent_id: '144'
+    url: http://www.gutenberg.org/2009/agents/144
+    wikipedia: http://en.wikipedia.org/wiki/Geoffrey_Chaucer
+  editor:
+    agent_name: Skeat, Walter W. (Walter William)
+    alias: Skeat, Walter William
+    birthdate: 1835
+    deathdate: 1912
+    gutenberg_agent_id: '4590'
+    url: http://www.gutenberg.org/2009/agents/4590
+    wikipedia: http://en.wikipedia.org/wiki/Walter_William_Skeat
+description: ''
+gutenberg_bookshelf: Best Books Ever Listings
+gutenberg_issued: '2007-07-22'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '22120'
+language: enm
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcc 'PR'
+- !lcsh 'Christian pilgrims and pilgrimages -- Poetry'
+- GITenberg
+title: Chaucer's Works, Volume 4 (of 7) — The Canterbury Tales
+url: http://www.gutenberg.org/ebooks/22120
