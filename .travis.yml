@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/rdhyee/gitberg.git
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+git://github.com/rdhyee/pg-epubmaker.git
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: STv1xPTSg094EtyuGWpohlis7RGB+3gN8yjumjSKuU4nA0a+kApvjil/1nmkw2wcrZsDLgGOuH9NdZ/ne3fpb2C0bcpnhl5xMSSclWJorhVKdNtPkRi3BaIpwXJbB1E9BiOhVHtc5F23pfls60llpSkmYtnHyWLWP0+xY7rSc0lWywBFWvwhlCDVs97PoolhG6EfKdzzlITqEXy4bGrGL9qo02ib28RZOYW6stBTYd94jtBMW6wJA8ieoeI/Zn5pDjMrjtIjx2o3sPG7i6rob7LmplguMd4hXJHuIjpw2ux25TVljgf8wceK3ekUz9mo8upO7kHs2ICoxrkN2cF6azJSqkK+ltj+qESTkmgfM+AKMaY5DWVqrpcTdgHkxvaEFfbG0LO3A0ijQasD7d56FJvguCPFaLsxYFi8Jj/gpDiXirUT29AwYc9o64QsgQs2XPBngM6my7yl0owKnnJKkYzmBqYlM3V7/Ed60u/oROTyA5IJH650SBiIUYUicnGzSymTH4A4GBeaDZ6/SdljrsslGcZtUwhljS9NZBZ+VXh07TL9jpf7OxQ86U0N09lHvjpXb6nYIg5dmt9WFgNySSzKAyhHLQfMmVaEB/nmWoHDJWjSp8MYQ8HQgn4ynWgApQ24ISbZJyYSyUL2J878tZSDK3gWXM3GWeWFoMQhxpc=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: rdhyee/Chaucer-s-Works-Volume-4-of-7-The-Canterbury-Tales_22120
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
