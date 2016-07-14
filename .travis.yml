@@ -40,7 +40,7 @@ deploy:
     - book.mobi
     - book.pdf
   "on":
-    repo: rdhyee/Chaucer-s-Works-Volume-4-of-7-The-Canterbury-Tales_22120
+    repo: rdhyee/Chaucer-s-Works-Volume-4--of-7----The-Canterbury-Tales_22120
 addons:
   apt:
     packages:
